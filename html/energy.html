@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Energy - PHP Unit Converter</title>
+ <link rel="icon" href="../assets/icons/php-logo.png">
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+ <link rel="stylesheet" href="../style.css">
+
+ <!-- Other fontawesome css files won't work -->
+ <link rel="stylesheet" href="../assets/css/all.css">
+</head>
+<body id="body">
+ <div class="overlay"></div>
+ <div class="remove-overflow-y wrapper--body">
+  <main>
+   <nav id="nav">
+    <div class="scroller scroller-nav">
+     <div class="nav__banner">
+      <i class="fa-brands fa-php fa-9x"></i>
+      <h1>PHP Unit Converter</h1>
+     </div>
+ 
+     <span class="hr"></span>
+  
+     <ul>
+      <li>
+       <a href="./area.html" class="nav__button">
+        <i class="fa-solid fa-chart-area fa-2x"></i>
+        Area
+       </a>
+      </li>
+   
+      <li>
+       <a href="./cooking.html" class="nav__button">
+        <i class="fa-solid fa-bowl-food fa-2x"></i>
+        Cooking
+       </a>
+      </li>
+   
+      <li>
+       <a href="./currency.html" class="nav__button">
+        <i class="fa-solid fa-money-bill fa-2x"></i>
+        Currency
+       </a>
+      </li>
+   
+      <li>
+       <a href="./digital-storage.html" class="nav__button">
+        <i class="fa-solid fa-hard-drive fa-2x"></i>
+        Digital Storage
+       </a>
+      </li>
+   
+      <li>
+       <a href="./energy.html" class="nav__button nav__button-chosen">
+        <i class="fa-solid fa-battery-full fa-2x"></i>
+        Energy
+       </a>
+      </li>
+   
+      <li>
+       <a href="./fuel-consumption.html" class="nav__button">
+        <i class="fa-solid fa-gas-pump fa-2x"></i>
+        Fuel Consumption
+       </a>
+      </li>
+   
+      <li>
+       <a href="./length-distance.html" class="nav__button">
+        <i class="fa-solid fa-ruler fa-2x"></i>
+        Length / Distance
+       </a>
+      </li>
+   
+      <li>
+       <a href="./mass-weight.html" class="nav__button">
+        <i class="fa-solid fa-weight-scale fa-2x"></i>
+        Mass / Weight
+       </a>
+      </li>
+   
+      <li>
+       <a href="./power.html" class="nav__button">
+        <i class="fa-solid fa-bolt fa-2x"></i>
+        Power
+       </a>
+      </li>
+   
+      <li>
+       <a href="./pressure.html" class="nav__button">
+        <i class="fa-solid fa-gauge fa-2x"></i>
+        Pressure
+       </a>
+      </li>
+   
+      <li>
+       <a href="./speed.html" class="nav__button">
+        <i class="fa-solid fa-person-running fa-2x"></i>
+        Speed
+       </a>
+      </li>
+   
+      <li>
+       <a href="./temperature.html" class="nav__button">
+        <i class="fa-solid fa-thermometer fa-2x"></i>
+        Temperature
+       </a>
+      </li>
+   
+      <li>
+       <a href="./time.html" class="nav__button">
+        <i class="fa-solid fa-clock fa-2x"></i>
+        Time
+       </a>
+      </li>
+   
+      <li>
+       <a href="./torque.html" class="nav__button">
+        <i class="fa-solid fa-rotate-right fa-2x"></i>
+        Torque
+       </a>
+      </li>
+   
+      <li>
+       <a href="./volume.html" class="nav__button">
+        <i class="fa-solid fa-box fa-2x"></i>
+        Volume
+       </a>
+      </li>
+     </ul>
+ 
+     <span class="hr"></span>
+  
+     <div class="nav__extra">
+      <a href="../html/index.html">
+       <i class="fa-solid fa-book-open"></i>
+       See instructions
+      </a>
+  
+      <button>Change</button>
+     </div>
+    </div>
+   </nav>
+  </main>
+ 
+  <aside>
+   <header>
+    <div class="burger">
+     <span></span>
+     <span></span>
+     <span></span>
+    </div>
+  
+    <h2>Energy</h2>
+   </header>
+ 
+   <form class="content">
+    <div class="container--content wrapper wrapper-content">
+     <div class="container--content-item">
+      <div class="content--top">
+       <div class="content--left">
+        <div class="content--title">
+         <h2>Foo</h2>
+  
+         <input type="number" name="x_number">
+        </div>
+  
+        <h3>From</h3>
+       </div>
+  
+       <div class="content--right right">
+        <div class="content--title">
+         <h2>Bar</h2>
+  
+         <input type="number" name="y_number" disabled>
+        </div>
+  
+        <h3>To</h3>
+       </div>
+      </div>
+     </div>
+
+     <input type="submit">
+
+     <div class="container--content-item">
+      <div class="scroller scroller-content">
+       <div class="wrapper wrapper-bottom">
+        <ul>
+         <li>
+          <input type="radio" name="x_unit" value="joule">
+          Joule
+         </li>
+   
+         <li>
+          <input type="radio" name="x_unit" value="kilojoule">
+          Kilojoule
+         </li>
+   
+         <li>
+          <input type="radio" name="x_unit" value="calorie">
+          Calorie
+         </li>
+   
+         <li>
+          <input type="radio" name="x_unit" value="kilocalorie">
+          Kilocalorie
+         </li>
+   
+         <li>
+          <input type="radio" name="x_unit" value="btu">
+          BTU
+         </li>
+   
+         <li>
+          <input type="radio" name="x_unit" value="ft_lbf">
+          ft-lbf
+         </li>
+   
+         <li>
+          <input type="radio" name="x_unit" value="in_lbf">
+          in-lbf
+         </li>
+   
+         <li>
+          <input type="radio" name="x_unit" value="kilowatt-hr">
+          Kilowatt-Hour
+         </li>
+        </ul>
+  
+        <ul class="right">
+         <li>
+          Joule
+          <input type="radio" name="y_unit" value="joule">
+         </li>
+   
+         <li>
+          Kilojoule
+          <input type="radio" name="y_unit" value="kilojoule">
+         </li>
+   
+         <li>
+          Calorie
+          <input type="radio" name="y_unit" value="calorie">
+         </li>
+   
+         <li>
+          Kilocalorie
+          <input type="radio" name="y_unit" value="kilocalorie">
+         </li>
+   
+         <li>
+          BTU
+          <input type="radio" name="y_unit" value="btu">
+         </li>
+   
+         <li>
+          ft-lbf
+          <input type="radio" name="y_unit" value="ft_lbf">
+         </li>
+   
+         <li>
+          in-lbf
+          <input type="radio" name="y_unit" value="in_lbf">
+         </li>
+   
+         <li>
+          Kilowatt-Hour
+          <input type="radio" name="y_unit" value="kilowatt-hr">
+         </li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </div>
+   </form>
+  </aside>
+ </div>
+</body>
+<script src="../js/navbar.js"></script>
+</html>

@@ -1,0 +1,652 @@
+/* GUIDELINES */
+/* display stuff */
+/* positioning stuff */
+/* box-model stuff (width/height/border/padding/margins/border-radius/
+                    boxshadow) */
+
+/* background */
+/* typography (font-size/color) */
+/* manipulation (transform/filter/opacity) */
+/* misc (overflow/z-index) */
+
+/* TODO */
+/* 1. Rewrite so as to use main for the sidebar and aside for everything else */
+
+/* RESET */
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  min-height: 100vh;
+}
+
+img, 
+picture, 
+svg, 
+video {
+  display: block;
+  width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* BASE */
+:root {
+  --black: #1D1F21;
+  --white: #C5C8C6;
+  --blue: #81A2BE;
+  --red: #A54242;
+  --grey: #373B41;
+  --dark-grey: #2A2E33;
+  --light-grey: #5F6369;
+  --transparent: rgba(29, 31, 33, 0.6);
+  --white-transparent: rgba(197, 200, 198, 0.2);
+  --total-transparent: rgba(255, 255, 255, 0);
+  --none: none;
+}
+
+body {
+  background-color: var(--black);
+  color: var(--white);
+}
+
+.body--checked {
+  overflow-y: hidden;
+}
+
+.remove-overflow-y {
+  height: 100vh;
+}
+
+.container {
+  width: 80% !important;
+  margin: 0 auto;
+}
+
+.container--content {
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.container--content-item {
+  width: 90% !important;
+}
+
+.wrapper {
+  display: flex;
+}
+
+.wrapper-content {
+  flex-direction: column;
+  align-items: center;
+}
+
+.wrapper-bottom {
+  justify-content: space-between;
+}
+
+/* SCROLLBAR */
+.scroller {
+  height: 60vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.scroller-nav {
+  height: 100vh !important;
+}
+
+.scroller-content {
+  padding: 0 1em 0 1em;
+}
+
+.scroller::-webkit-scrollbar {
+  max-width: 1rem;
+  background: var(--dark-grey);
+}
+
+.scroller::-webkit-scrollbar-thumb {
+  /* border-radius: 6.6rem; */
+  background: var(--light-grey);
+}
+
+/* TYPOGRAPHY */
+html {
+  font-family: 'Inter', sans-serif;
+  font-size: 62.5%;
+  letter-spacing: .5px;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.0rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+/* ASIDE */
+aside {
+  overflow: hidden;
+  height: 100%;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* height: 7%; */
+  padding: 1.5em;
+  background-color: var(--blue);
+}
+
+.header--checked {
+  position: absolute;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  z-index: 2;
+  cursor: pointer;
+
+  /* Note 1 - Start */
+  /* Calculate height of burger menu
+     calc((heightOfSpan - 1) * numberOfSpan + gapBetweenSpan * numberOfGaps */
+  --burger-height: calc(7px * 3 + .5em * 2);
+
+  /* Calculate width of span
+     calc(burger-height * sqrtOf2 */
+  --x-width: calc(var(--burger-height) * 1.41421356237);
+}
+
+.burger span {
+  display: block;
+  width: 40px;
+  border-top: 8px solid var(--white);
+  border-radius: 3.3px;
+  transform-origin: left center;
+  transition: 400ms;
+}
+
+.burger--checked {
+  translate: 31em 0;
+}
+
+.burger--checked span:nth-child(1) {
+  width: var(--x-width);
+
+  /* Transform in x 0 because no horizontal movement required but move
+     (heightOfSpan - 1) / -2 ; negative to move down */
+  transform: rotate(45deg) translate(0, calc(7px / -2));
+}
+
+.burger--checked span:nth-child(2) {
+  width: 0;
+  opacity: 0;
+}
+
+.burger--checked span:nth-child(3) {
+  width: var(--x-width);
+  transform: rotate(-45deg) translate(0, calc(7px / 2));
+  /* Note 1 - End */
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  /* gap: 3em; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  max-width: 320px;
+  /* height: 100%; */
+  /* border-radius: 0 6.6px 6.6px 0; */
+  background-color: var(--grey);
+  text-wrap: nowrap;
+  overflow-y: hidden;
+  z-index: 2;
+  transition: 800ms;
+}
+
+.nav--checked {
+  width: 80%;
+}
+
+.nav__banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%; */
+  padding: 1em 0;
+  /* border-radius: 0 6.6px 6.6px 6.6px; */
+  background-color: var(--grey);
+  /* color: var(--grey); */
+  text-align: center;
+  font-style: oblique;
+  text-transform: uppercase;
+}
+
+.nav__banner h1 {
+  font-size: 2.2rem;
+}
+
+/* .nav__banner span {
+  /* font-size: 2rem;
+  font-style: normal;
+  text-transform: uppercase;
+} */
+
+.hr {
+  display: block;
+  width: 100%;
+  margin: 2.2em 0;
+  border: 1.8px solid var(--transparent);
+}
+
+nav ul {
+  width: 100%;
+}
+
+nav li {
+  margin: 0;
+}
+
+.nav__button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* gap: 1em; */
+  padding: .7em 2em;
+  border: 0px;
+  /* border-radius: 33px; */
+  /* background-color: var(--black); */
+  font-size: 1.8rem;
+  color: var(--white);
+  transition: 300ms;
+}
+
+.nav__button-hovered {
+  background-color: var(--white-transparent);
+}
+
+.nav__button:focus {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+.nav__button-chosen {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+#index-button.nav__button-chosen {
+  background-color: var(--grey);
+  color: var(--white);
+}
+
+/* Note 2 - Start */
+/* This is how you vertically text and icons together in straight line */
+nav ul i {
+  /* Assign width to give space; assign min-width so no squeeze when nav
+     closes */
+  width: 2em;
+  min-width: 2em;
+}
+/* Note 2 - End */
+
+/* nav span {
+  display: block;
+  width: 100%;
+  margin: 4em 0;
+  border: 1.8px solid var(--transparent);
+} */
+
+.nav__extra {
+  display: flex;
+  justify-content: space-evenly;
+  /* Stops elements from stretching due to adding padding-bottom to a */
+  align-items: flex-start;
+  margin: 2em 0;
+}
+
+.nav__extra a {
+  font-size: 1.3rem;
+  color: var(--white);
+}
+
+.nav__extra a:hover,
+.nav__extra a:focus {
+  padding-bottom: .2em;
+  border-bottom: 1px solid var(--white);
+}
+
+/* OVERLAY */
+/* Not using id here because id and class attributes don't mix */
+.overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--transparent);
+  z-index: 1;
+  /* Note 3 - Start (Using @keyframes) */
+  /* visibility: hidden; */
+
+  /* Note 4 - Start (Using transition) */
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0ms 400ms, opacity 400ms linear;
+}
+
+.overlay--checked {
+  /* animation: 500ms fadeIn;
+  animation-fill-mode: forwards; */
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 400ms linear;
+  /* Note 4 - End */
+}
+
+/* @keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+} */
+/* Note 3 - End */
+
+/* INSTRUCTIONS PAGE */
+.content {
+  margin-top: 5em;
+}
+
+.content-instructions {
+  justify-content: flex-start;
+  gap: 0;
+  margin-top: 10em;
+}
+
+.content img {
+  margin-bottom: 3em;
+  border-radius: 33px;
+  object-fit: cover;
+}
+
+.content h2 {
+  margin-bottom: 1em;
+}
+
+.content p {
+  margin-bottom: 1.2em;
+  font-size: 1.8rem;
+  text-indent: 3em;
+  text-align: justify;
+}
+
+.content ol {
+  padding-left: 3em;
+  font-size: 1.8rem;
+}
+
+.content li {
+  margin: .6em 0;
+}
+
+.content--top {
+  display: flex;
+  justify-content: space-between;
+  gap: 3em;
+  /* position: sticky;
+  top: 0; */
+  background-color: var(--black);
+}
+
+.content--title {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.content--title h2 {
+  margin-top: 1em;
+  margin-bottom: 0;
+}
+
+.content--title input {
+  width: 100%;
+  padding: .2em;
+  border: 0;
+  border-bottom: 2px solid var(--white);
+  outline: 0;
+  background-color: var(--total-transparent);
+  font-size: 1.8rem;
+  color: var(--white);
+  caret-color: var(--blue);
+}
+
+.content--title input:focus {
+  border-bottom: 2px solid var(--blue);
+}
+
+.content ul {
+  font-size: 1.3rem;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.right {
+  text-align: right;
+}
+
+input[type=submit] {
+  width: 90%;
+  padding: .5em 0;
+  margin: 1em 0;
+  border: none;
+  background-color: var(--grey);
+  color: var(--white);
+  font-size: 1.3rem;
+  font-size: clamp(1.3rem, 3vw, 2rem);
+  transition: 300ms;
+  cursor: pointer;
+}
+
+input[type=submit]:hover,
+input[type=submit]:focus {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+/* MEDIA QUERIES */
+/* This was used for having the disappearing scrollbar in mobile
+   but we've learned now to use custom scrollbars sparingly in
+   elements that do not take more than the page's height 
+   (break rule if you want) */
+/* @media (max-width: 480px) {
+  /* For older browsers that support '::webkit-scrollbar-*'
+  @supports selector(::webkit-scrollbar) {
+    .scroller::-webkit-scrollbar {
+      max-width: 1rem;
+      background: var(--dark-grey);
+    }
+    
+    .scroller::-webkit-scrollbar-thumb {
+      /* border-radius: 6.6rem;
+      background: var(--light-grey);
+    }
+  }
+
+  /* For browsers that support 'scrollbar-*'
+  @supports (scrollbar-width: auto) {
+    .scroller {
+      scrollbar-width: 1rem;
+      scrollbar-color: var(--light-grey) var(--dark-grey);
+      scrollbar-arrow-color: var(--dark-grey);
+    }
+  }
+} */
+@media (max-width: 380px) {
+  h2 {
+    font-size: 2rem;
+  }
+
+  .content p,
+  .content ol,
+  .content ul {
+    font-size: 1.6rem;
+  }
+
+  .burger--checked {
+    translate: clamp(25em, 1vw, 31em) 0;
+  }
+
+  .nav--checked {
+    width: clamp(70%, 1vw, 80%);
+  }
+
+  .nav__banner h1 {
+    font-size: 1.4rem;
+  }
+
+  .nav__button {
+    font-size: 1.2rem;
+  }
+
+  .nav__extra a {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 320px) {
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  header h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  .burger--checked {
+    translate: clamp(21em, 1vw, 25em) 0;
+  }
+
+  .content p,
+  .content ol,
+  .content ul {
+    font-size: 1.2rem;
+  }
+
+}
+
+@media (min-width: 769px) {
+  .wrapper-content {
+    justify-content: center;
+  }
+
+  .scroller {
+    height: 50vh;
+  }
+
+  .content img {
+    max-height: 500px;
+  }
+}
+
+@media (min-width: 800px) {
+  .content--text {
+    padding-left: 2em;
+  }
+}
+
+@media (min-width: 1201px) {
+  .content {
+    margin-top: 0;
+  }
+
+  .content-instructions {
+    margin-top: 5em;
+  }
+
+  .container--content {
+    width: 60% !important;
+  }
+
+  .wrapper--body {
+    display: flex;
+  }
+
+  main {
+    width: 30%;
+  }
+
+  aside {
+    width: 150%;
+  }
+
+  header {
+    position: static;
+    justify-content: center;
+    height: 6.5%;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  nav {
+    position: static;
+    width: 100%;
+  }
+}
